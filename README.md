@@ -28,11 +28,15 @@ By clustering customers based on their transaction history, the business can:
 
 ## 📂 Dataset  
 The dataset contains **transactional sales data** with attributes such as:  
-- **Recency (R):** How recently a customer made a purchase  
-- **Frequency (F):** How often they purchase  
-- **Monetary (M):** Total spend value of the customer  
-- **Total Quantity:** Number of products/items purchased  
-- **Average Basket Value:** Average spend per transaction  
+- **InvoiceNo:** Unique identifier for each invoice  
+- **StockCode:**  Product/item code  
+- **Description:** Name/description of the product
+- **Quantity:** Number of products/items purchased  
+- **InvoiceDate:** Date of the transaction
+- **UnitPrice:** Price per unit of the product  
+- **CustomerID:** Unique identifier for each customer
+- **Country:** Country of the customer
+
 
 These features are inspired by the **RFM framework**, widely used in customer analytics.  
 
