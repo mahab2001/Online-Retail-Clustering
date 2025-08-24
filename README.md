@@ -1,100 +1,111 @@
-Customer Segmentation using Machine Learning
+Customer Segmentation Using Clustering
 📌 Project Overview
 
-This project aims to segment customers into distinct groups based on their purchasing behavior and demographic/transactional attributes. By identifying meaningful clusters, businesses can design targeted marketing campaigns, improve customer retention, and maximize revenue.
+This project applies unsupervised machine learning techniques to segment customers into distinct groups based on their purchasing behavior. By understanding customer segments, businesses can tailor marketing strategies, improve customer retention, and maximize revenue through more personalized offers.
 
-Segmentation is one of the most common real-world use cases of unsupervised learning, especially in retail, e-commerce, and financial services.
+Customer segmentation is a real-world business problem faced by companies in retail, airlines, FMCG, and other industries. Instead of treating all customers the same, segmentation allows us to identify high-value customers, frequent buyers, and inactive or at-risk customers.
 
-🛠️ Business Problem
+🎯 Business Objective
 
-Companies often treat all customers the same, leading to inefficient marketing campaigns, wasted resources, and missed opportunities. Customer segmentation allows businesses to:
+The goal of this project is to answer:
 
-Identify high-value customers.
+Who are my most valuable customers?
 
-Understand customer needs and preferences.
+Which customers are highly engaged and loyal?
 
-Design personalized promotions.
+Which customers are at risk of churning?
 
-Improve cross-selling and upselling strategies.
+How can the business design better-targeted campaigns for each segment?
 
-🔍 Approach
+By clustering customers based on their transaction history, the business can:
 
-Data Collection
+Focus retention strategies on high-value customers.
 
-The dataset contains customer information such as demographics, purchase history, and spending patterns.
+Design reactivation campaigns for dormant customers.
 
-Data Preprocessing
+Improve resource allocation for marketing and sales efforts.
 
-Handling missing values.
+📂 Dataset
 
-Encoding categorical variables.
+The dataset contains transactional sales data over several years. Each record represents customer activity with attributes such as:
 
-Scaling numerical features (e.g., using StandardScaler or MinMaxScaler).
+Recency (R): How recently a customer made a purchase.
+
+Frequency (F): How often they purchase.
+
+Monetary (M): Total spend value of the customer.
+
+TotalQuantity: Number of products/items purchased.
+
+Average Basket Value: Average spend per transaction.
+
+These features are inspired by the RFM framework, widely used in customer analytics.
+
+🔍 Methodology
+
+Data Cleaning & Preparation
+
+Removed missing and duplicate entries.
+
+Filtered out irrelevant transactions (e.g., cancellations or extreme outliers).
+
+Calculated Recency, Frequency, Monetary, Total Quantity, and Avg Basket Value.
+
+Scaled features to bring all metrics to a comparable range.
 
 Exploratory Data Analysis (EDA)
 
-Distribution of features.
+Distribution of spend and frequency across customers.
 
-Correlation analysis.
+Identified skewness and handled outliers.
 
-Identifying trends and anomalies.
-
-Feature Engineering
-
-Creating behavioral metrics (e.g., total spend, average purchase value, recency of last purchase, frequency).
-
-Normalizing variables for clustering.
+Initial insights into customer value distribution.
 
 Clustering Models
 
-K-Means Clustering.
+K-Means Clustering: Tested multiple values of k using the elbow method and silhouette score.
 
-Hierarchical Clustering.
+DBSCAN: Applied density-based clustering to capture irregular cluster shapes and outliers.
 
-DBSCAN (for anomaly detection and irregular groups).
+Compared performance and interpretability of both methods.
 
-The optimal number of clusters was determined using Elbow Method and Silhouette Score.
+Cluster Profiling
 
-Evaluation & Insights
+Analyzed each cluster by computing means and medians of key metrics.
 
-Interpreting clusters based on meaningful business attributes.
+Interpreted results in a business context (e.g., high-value vs low-value customers).
 
-Profiling customer segments (e.g., “High spenders”, “Discount seekers”, “Infrequent buyers”).
+📊 Results – Example with 3 Clusters
+Cluster	Size	Recency (Days)	Frequency	Monetary ($)	Total Qty	Avg Basket Value ($)	Profile
+0	2029	64.5	2.4	705.3	421.3	355.6	Mid-value, moderately engaged
+1	1209	31.3	10.1	5951.3	3440.5	727.0	High-value, highly engaged
+2	1100	211.6	1.3	237.2	125.0	192.1	Low-value, at-risk/inactive
+Insights:
 
-📊 Results
+Cluster 1: Loyal, high-spending customers — should be nurtured with loyalty programs.
 
-Customers were grouped into X clusters with clear behavioral differences.
+Cluster 0: Medium spenders — can be encouraged to buy more with personalized offers.
 
-Example (hypothetical):
+Cluster 2: Dormant/low-value customers — need reactivation campaigns or may not be worth high marketing spend.
 
-Cluster 1: High-value loyal customers (frequent purchases, high spend).
+🛠️ Tools & Technologies
 
-Cluster 2: Price-sensitive customers (low spend, high response to discounts).
+Python (pandas, numpy, matplotlib, seaborn, scikit-learn)
 
-Cluster 3: Inactive customers (long recency, low frequency).
+Clustering Algorithms: K-Means, DBSCAN
 
-These insights can directly guide marketing strategies, loyalty programs, and product recommendations.
+EDA & Visualization: Matplotlib & Seaborn
 
-🚀 Tech Stack
+Feature Scaling: StandardScaler / MinMaxScaler
 
-Python
+🚀 Business Impact
 
-Pandas, NumPy – data manipulation
+The segmentation provides actionable insights for:
 
-Matplotlib, Seaborn – visualization
+Marketing: Design campaigns tailored to each customer type.
 
-Scikit-learn – clustering algorithms, scaling
+Sales: Prioritize relationships with high-value customers.
 
-Jupyter/Colab – development environment
+Customer Success: Intervene with at-risk customers to reduce churn.
 
-📈 Business Impact
-
-By applying this customer segmentation model, businesses can:
-
-Increase marketing ROI through targeted campaigns.
-
-Enhance customer satisfaction with personalized experiences.
-
-Boost revenue by identifying and nurturing high-value customers.
-
-Reduce churn by re-engaging inactive customers.
+Strategy: Allocate resources more efficiently across customer groups.
